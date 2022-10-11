@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 1f;
     public float jumpForce = 1f;
-    public Rigidbody2D rb;
+    Rigidbody2D rb;
+    Test1 test;
 
     public Transform groundcheck;
     public LayerMask groundLayer;
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        test = new Test1();
+        test.Hello();
     }
     // Update is called once per frame
     void Update()
