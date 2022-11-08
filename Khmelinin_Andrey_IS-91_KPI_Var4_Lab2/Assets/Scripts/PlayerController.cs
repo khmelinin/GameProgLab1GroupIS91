@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,10 +18,26 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
 
     public Transform cameraTransform;
-    // Start is called before the first frame update
+
+    //public float playerGravityState = 9.807f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        //switch (SceneManager.GetActiveScene().name)
+        //{
+        //    case "Moon":
+        //        playerGravityState = 1.62f;
+        //        break;
+        //    case "Earth":
+        //        playerGravityState = 9.807f;
+        //        break;
+        //    default:
+        //        playerGravityState = 9.807f;
+        //        break;
+        //}
+        //Physics.gravity = new Vector3(0, -playerGravityState, 0);
     }
     // Update is called once per frame
     void Update()
@@ -30,11 +47,6 @@ public class PlayerController : MonoBehaviour
 
         Move();
         Look();
-    }
-
-    private void FixedUpdate()
-    {
-
     }
 
     private void Move()
@@ -65,10 +77,5 @@ public class PlayerController : MonoBehaviour
             xRotation = 90;
         }
         cameraTransform.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-    }
-
-    void Jump()
-    {
-        rb.velocity = Vector3.up * jumpForce;
     }
 }
